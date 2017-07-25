@@ -92,6 +92,24 @@ app.post('/', function (req, res) {
   }
 });
 
+function processPageEvents(data) {
+  data.entry.forEach(function(entry){
+    let page_id = entry.id;
+		// Chat messages sent to the page
+    if(entry.messaging) {
+      entry.messaging.forEach(function(messaging_event){
+        console.log('Page Messaging Event',page_id,messaging_event);
+      });
+    }
+		// Page related changes, or mentions of the page
+    if(entry.changes) {
+      entry.changes.forEach(function(change){
+        console.log('Page Change',page_id,change);
+      });
+    }
+  });
+}
+
 
 /*
  * Verify that the callback came from Facebook. Using the App Secret we
