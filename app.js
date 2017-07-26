@@ -147,16 +147,16 @@ function sendTextMessage(recipientId, messageText) {
     //
 
 
-  request({
-    uri: 'https://graph.facebook.com/v2.6/me/conversations?fields=messages{ohi}',
-    qs: { access_token: ACCESS_TOKEN },
-    method: 'POST',
-    json: messageData
-
-  }, function (error, response, body) {
-    console.log('response', response);
-    console.log('body', body);
-    console.log('error', error);
+  // request({
+  //   uri: 'https://graph.facebook.com/v2.6/me/conversations?fields=messages{ohi}',
+  //   qs: { access_token: ACCESS_TOKEN },
+  //   method: 'POST',
+  //   json: messageData
+  //
+  // }, function (error, response, body) {
+  //   console.log('response', response);
+  //   console.log('body', body);
+  //   console.log('error', error);
 
     // if (!error && response.statusCode == 200) {
     //   var recipientId = body.recipient_id;
@@ -173,7 +173,7 @@ function sendTextMessage(recipientId, messageText) {
     //   console.error(response);
     //   console.error(error);
     // }
-  });
+  // });
 }
 
 
