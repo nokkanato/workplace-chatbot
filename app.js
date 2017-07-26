@@ -136,6 +136,9 @@ function sendTextMessage(recipientId, messageText) {
   function callSendAPI(messageData) {
     console.log('------messageData--------');
     console.log(messageData);
+    console.log('requesting to', messageData.sender.id);
+    console.log('receive msg' , messageData.message.text);
+
   // request({
   //   uri: 'https://graph.facebook.com/v2.6/me/messages',
   //   qs: { access_token: ACCESS_TOKEN },
