@@ -123,6 +123,7 @@ function sendTextMessage(recipientId, messageText) {
     },
     message: {
       text: messageText
+      }
     }
   };
 
