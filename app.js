@@ -101,9 +101,11 @@ function processPageEvents(data) {
         console.log('Page Messaging Event',page_id,messaging_event);
         console.log(messaging_event);
         console.log('--------------------------------------');
-        console.log('message', messaging_event.sender.id);
+        console.log('senderID', messaging_event.sender.id);
+        console.log('--------------------------------------');
+        console.log('text', messaging_event.message.text);
 
-        // sendTextMessage(messaging_event.sender.id)
+        sendTextMessage(messaging_event.sender.id, )
       });
     }
 		// Page related changes, or mentions of the page
