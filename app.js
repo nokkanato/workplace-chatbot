@@ -137,7 +137,7 @@ function sendTextMessage(recipientId, messageText) {
     console.log('------messageData--------');
     console.log(messageData);
     console.log('requesting to', messageData.recipient.id);
-    console.log('receive msg' , messageData.message.ext);
+    console.log('receive msg' , messageData.message.text);
 
   // request({
   //   uri: 'https://graph.facebook.com/v2.6/me/messages',
