@@ -101,11 +101,11 @@ function processPageEvents(data) {
     if(entry.messaging) {
       entry.messaging.forEach(function(messaging_event){
         console.log('Page Messaging Event',page_id,messaging_event);
-        console.log(messaging_event);
+        // console.log(messaging_event);
         console.log('--------------------------------------');
-        console.log('senderID', messaging_event.sender.id);
+        // console.log('senderID', messaging_event.sender.id);
         console.log('--------------------------------------');
-        console.log('text', messaging_event.message.text);
+        // console.log('text', messaging_event.message.text);
 
         sendTextMessage(messaging_event.sender.id, messaging_event.message.text )
       });
