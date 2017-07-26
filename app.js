@@ -99,6 +99,11 @@ function processPageEvents(data) {
     if(entry.messaging) {
       entry.messaging.forEach(function(messaging_event){
         console.log('Page Messaging Event',page_id,messaging_event);
+        console.log(messaging_event);
+        console.log('--------------------------------------');
+        console.log('message', messaging_event.sender.id);
+
+        // sendTextMessage(messaging_event.sender.id)
       });
     }
 		// Page related changes, or mentions of the page
@@ -109,6 +114,17 @@ function processPageEvents(data) {
     }
   });
 }
+
+
+function sendTextMessage(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: messageText
+    }
+  };
 
 
 /*
