@@ -3,6 +3,7 @@ const
   crypto = require('crypto'),
   express = require('express'),
   request = require('request');
+  FB = require('fb')
 
   require('dotenv').load();
 
@@ -146,7 +147,16 @@ function sendTextMessage(recipientId, messageText) {
     //   /me/conversations?fields=messages{message,attachments}
     //
     console.log('-----------ACCESS_TOKEN-----------------');
-    console.log(ACCESS_TOKEN);
+    var body = 'Reading JS SDK documentation';
+    FB.api('/me/feed', 'post', { message: body }, function(response) {
+      if (!response || response.error) {
+        alert('Error occured');
+      } else {
+        alert('Post ID: ' + response.id);
+      }
+});
+
+
 
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
@@ -161,22 +171,22 @@ function sendTextMessage(recipientId, messageText) {
     console.log('statuscode');
 
     if (!error && response.statusCode == 200) {
-      console.log('200');
 
 
-      // var recipientId = body.recipient_id;
-      // var messageId = body.message_id;
-      // console.log('------recipientId----------');
-      // console.log(recipientId);
-      // console.log("-------messageId---------");
-      // console.log(messageId);
-      //
-      // console.log("Successfully sent generic message with id %s to recipient %s",
-      //   messageId, recipientId);
+      var recipientId = body.recipient_id;
+      var messageId = body.message_id;
+      console.log('------recipientId----------');
+      console.log(recipientId);
+      console.log("-------messageId---------");
+      console.log(messageId);
+
+      console.log("Successfully sent generic message with id %s to recipient %s",
+        messageId, recipientId);
     } else {
+      console.log('sayhi tome');
       console.error("Unable to send message.");
-      // console.error(response);
-      // console.error(error);
+      console.error(response);
+      console.error(error);
     }
   });
 }
