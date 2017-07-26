@@ -147,7 +147,7 @@ function sendTextMessage(recipientId, messageText) {
     //   /me/conversations?fields=messages{message,attachments}
     //
     console.log('-----------ACCESS_TOKEN-----------------');
-  
+
 
 
 
@@ -177,9 +177,9 @@ function sendTextMessage(recipientId, messageText) {
         messageId, recipientId);
     } else {
       console.log('sayhi tome');
-      console.error("Unable to send message.");
-      console.error(response);
-      console.error(error);
+      // console.error("Unable to send message.");
+      // console.error(response);
+      // console.error(error);
     }
   });
 }
