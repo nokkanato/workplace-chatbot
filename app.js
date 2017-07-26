@@ -142,13 +142,14 @@ function sendTextMessage(recipientId, messageText) {
     console.log('with text', messageData.message.text);
 
 
-
-
+    // GET graph.facebook.com
+    //   /me/conversations?fields=messages{message,attachments}
+    //
 
 
   request({
-    uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: { access_token: "DQVJ2SjJyUE80dHZAfajF6QlpvYm1uT1hvMTRfWEI0UGVUMjVIc2MwVVpCeVA3LXp0TmQ0MHdDU05QeENCbXJVRjVWQnVPVkJkZAVNBMUpMb25zU2Vrd0xKXy1tMmhyQnNWczg4LV9zSDRKOHJ0UlNIdjFRVFBESDlXdHNDb0JGeE1HUjYtREQ5ZATgtX0ZA2NzEzb2JvUzBTYy1YdkJ1ckh2dnFQVEdVdzM3LVh5ZAFdLZAlBM" },
+    uri: 'https://graph.facebook.com/v2.6/me/conversations?fields=messages{ohi}',
+    qs: { access_token: ACCESS_TOKEN },
     method: 'POST',
     json: messageData
 
