@@ -105,7 +105,7 @@ function processPageEvents(data) {
         console.log('--------------------------------------');
         console.log('text', messaging_event.message.text);
 
-        sendTextMessage(messaging_event.sender.id, )
+        // sendTextMessage(messaging_event.sender.id, )
       });
     }
 		// Page related changes, or mentions of the page
