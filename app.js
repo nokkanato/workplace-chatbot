@@ -158,29 +158,20 @@ function sendTextMessage(recipientId, messageText) {
     json: messageData
 
   }, function (error, response, body) {
-    console.log('response', response);
-    // console.log('body', body);
-    // console.log('error', error);
-    // console.log('statuscode');
-    //
-    // if (!error && response.statusCode == 200) {
-    //
-    //
-    //   var recipientId = body.recipient_id;
-    //   var messageId = body.message_id;
-    //   console.log('------recipientId----------');
-    //   console.log(recipientId);
-    //   console.log("-------messageId---------");
-    //   console.log(messageId);
-    //
-    //   console.log("Successfully sent generic message with id %s to recipient %s",
-    //     messageId, recipientId);
-    // } else {
-    //   console.log('sayhi tome');
-    //   console.error("Unable to send message.");
-    //   console.error(response);
-    //   console.error(error);
-    // }
+
+    if (!error && response.statusCode == 200) {
+
+
+      var recipientId = body.recipient_id;
+      var messageId = body.message_id;
+
+      console.log("Successfully sent generic message with id %s to recipient %s",
+        messageId, recipientId);
+    } else {
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
+    }
   });
 }
 

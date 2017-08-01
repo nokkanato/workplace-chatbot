@@ -1,0 +1,256 @@
+[debug] [2017-07-27T04:23:05.211Z] ----------------------------------------------------------------------
+[debug] [2017-07-27T04:23:05.214Z] Command:      /usr/local/bin/node /Users/Apple/.npm-packages/bin/firebase deploy --only functions
+[debug] [2017-07-27T04:23:05.215Z] CLI Version:  3.9.1
+[debug] [2017-07-27T04:23:05.215Z] Platform:     darwin
+[debug] [2017-07-27T04:23:05.215Z] Node Version: v6.11.0
+[debug] [2017-07-27T04:23:05.216Z] Time:         Thu Jul 27 2017 11:23:05 GMT+0700 (ICT)
+[debug] [2017-07-27T04:23:05.216Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-07-27T04:23:05.233Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-07-27T04:23:05.233Z] > authorizing via signed-in user
+[debug] [2017-07-27T04:23:05.235Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/chatbot-319ee  
+ Thu Jul 27 2017 11:23:05 GMT+0700 (ICT)
+[debug] [2017-07-27T04:23:07.715Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-27T04:23:07.717Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/chatbot-319ee/tokens  
+ Thu Jul 27 2017 11:23:07 GMT+0700 (ICT)
+[debug] [2017-07-27T04:23:09.185Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'chatbot-319ee'...
+[info] 
+[info] i  deploying functions
+[debug] [2017-07-27T04:23:12.466Z] > [functions] package.json contents: {
+  "name": "chatbot-workplace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "crypto": "0.0.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "fb": "^2.0.0",
+    "firebase-admin": "^5.1.0",
+    "firebase-functions": "^0.6.1",
+    "request": "^2.81.0"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] [2017-07-27T04:23:12.468Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/chatbot-319ee?view=CONSUMER_VIEW  
+ Thu Jul 27 2017 11:23:12 GMT+0700 (ICT)
+[debug] [2017-07-27T04:23:12.468Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/chatbot-319ee?view=CONSUMER_VIEW  
+ Thu Jul 27 2017 11:23:12 GMT+0700 (ICT)
+[debug] [2017-07-27T04:23:14.318Z] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] [2017-07-27T04:23:14.358Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2017-07-27T04:23:14.360Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/chatbot-319ee  
+ Thu Jul 27 2017 11:23:14 GMT+0700 (ICT)
+[debug] [2017-07-27T04:23:14.360Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/chatbot-319ee/apiKeys  
+ Thu Jul 27 2017 11:23:14 GMT+0700 (ICT)
+[debug] [2017-07-27T04:23:16.077Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-27T04:23:16.383Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2017-07-27T04:23:19.677Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/chatbot-319ee/configs  
+ Thu Jul 27 2017 11:23:19 GMT+0700 (ICT)
+[debug] [2017-07-27T04:23:20.076Z] <<< HTTP RESPONSE 200
+[error] 
+[error] Error: There was an unknown problem while trying to parse function triggers. Please ensure you are using Node.js v6 or greater.
+[debug] [2017-07-27T04:24:53.372Z] ----------------------------------------------------------------------
+[debug] [2017-07-27T04:24:53.375Z] Command:      /usr/local/bin/node /Users/Apple/.npm-packages/bin/firebase deploy --only functions
+[debug] [2017-07-27T04:24:53.375Z] CLI Version:  3.9.1
+[debug] [2017-07-27T04:24:53.376Z] Platform:     darwin
+[debug] [2017-07-27T04:24:53.376Z] Node Version: v6.11.0
+[debug] [2017-07-27T04:24:53.376Z] Time:         Thu Jul 27 2017 11:24:53 GMT+0700 (ICT)
+[debug] [2017-07-27T04:24:53.376Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-07-27T04:24:53.393Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-07-27T04:24:53.393Z] > authorizing via signed-in user
+[debug] [2017-07-27T04:24:53.395Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/chatbot-319ee  
+ Thu Jul 27 2017 11:24:53 GMT+0700 (ICT)
+[debug] [2017-07-27T04:24:56.188Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-27T04:24:56.190Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/chatbot-319ee/tokens  
+ Thu Jul 27 2017 11:24:56 GMT+0700 (ICT)
+[debug] [2017-07-27T04:24:58.376Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'chatbot-319ee'...
+[info] 
+[info] i  deploying functions
+[debug] [2017-07-27T04:25:02.505Z] > [functions] package.json contents: {
+  "name": "chatbot-workplace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "crypto": "0.0.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "fb": "^2.0.0",
+    "firebase-admin": "^5.1.0",
+    "firebase-functions": "^0.6.1",
+    "request": "^2.81.0"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] [2017-07-27T04:25:02.508Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/chatbot-319ee?view=CONSUMER_VIEW  
+ Thu Jul 27 2017 11:25:02 GMT+0700 (ICT)
+[debug] [2017-07-27T04:25:02.508Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/chatbot-319ee?view=CONSUMER_VIEW  
+ Thu Jul 27 2017 11:25:02 GMT+0700 (ICT)
+[debug] [2017-07-27T04:25:04.486Z] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] [2017-07-27T04:25:04.700Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2017-07-27T04:25:04.701Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/chatbot-319ee  
+ Thu Jul 27 2017 11:25:04 GMT+0700 (ICT)
+[debug] [2017-07-27T04:25:04.702Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/chatbot-319ee/apiKeys  
+ Thu Jul 27 2017 11:25:04 GMT+0700 (ICT)
+[debug] [2017-07-27T04:25:06.632Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-27T04:25:06.782Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2017-07-27T04:25:09.853Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/chatbot-319ee/configs  
+ Thu Jul 27 2017 11:25:09 GMT+0700 (ICT)
+[debug] [2017-07-27T04:25:10.227Z] <<< HTTP RESPONSE 200
+[error] 
+[error] Error: There was an unknown problem while trying to parse function triggers. Please ensure you are using Node.js v6 or greater.
+[debug] [2017-07-27T04:26:35.662Z] ----------------------------------------------------------------------
+[debug] [2017-07-27T04:26:35.665Z] Command:      /usr/local/bin/node /Users/Apple/.npm-packages/bin/firebase deploy --only functions
+[debug] [2017-07-27T04:26:35.665Z] CLI Version:  3.9.1
+[debug] [2017-07-27T04:26:35.665Z] Platform:     darwin
+[debug] [2017-07-27T04:26:35.665Z] Node Version: v6.11.0
+[debug] [2017-07-27T04:26:35.666Z] Time:         Thu Jul 27 2017 11:26:35 GMT+0700 (ICT)
+[debug] [2017-07-27T04:26:35.666Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-07-27T04:26:35.682Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-07-27T04:26:35.682Z] > authorizing via signed-in user
+[debug] [2017-07-27T04:26:35.685Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/chatbot-319ee  
+ Thu Jul 27 2017 11:26:35 GMT+0700 (ICT)
+[debug] [2017-07-27T04:26:37.041Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-27T04:26:37.043Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/chatbot-319ee/tokens  
+ Thu Jul 27 2017 11:26:37 GMT+0700 (ICT)
+[debug] [2017-07-27T04:26:38.134Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'chatbot-319ee'...
+[info] 
+[info] i  deploying functions
+[debug] [2017-07-27T04:26:40.958Z] > [functions] package.json contents: {
+  "name": "chatbot-workplace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "crypto": "0.0.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "fb": "^2.0.0",
+    "firebase-admin": "^5.1.0",
+    "firebase-functions": "^0.6.1",
+    "request": "^2.81.0"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] [2017-07-27T04:26:40.960Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/chatbot-319ee?view=CONSUMER_VIEW  
+ Thu Jul 27 2017 11:26:40 GMT+0700 (ICT)
+[debug] [2017-07-27T04:26:40.961Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/chatbot-319ee?view=CONSUMER_VIEW  
+ Thu Jul 27 2017 11:26:40 GMT+0700 (ICT)
+[debug] [2017-07-27T04:26:42.692Z] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] [2017-07-27T04:26:42.723Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2017-07-27T04:26:42.724Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/chatbot-319ee  
+ Thu Jul 27 2017 11:26:42 GMT+0700 (ICT)
+[debug] [2017-07-27T04:26:42.725Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/chatbot-319ee/apiKeys  
+ Thu Jul 27 2017 11:26:42 GMT+0700 (ICT)
+[debug] [2017-07-27T04:26:44.226Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-27T04:26:44.228Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2017-07-27T04:26:47.512Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/chatbot-319ee/configs  
+ Thu Jul 27 2017 11:26:47 GMT+0700 (ICT)
+[debug] [2017-07-27T04:26:48.127Z] <<< HTTP RESPONSE 200
+[error] 
+[error] Error: There was an unknown problem while trying to parse function triggers. Please ensure you are using Node.js v6 or greater.
+[debug] [2017-07-27T04:26:54.535Z] ----------------------------------------------------------------------
+[debug] [2017-07-27T04:26:54.538Z] Command:      /usr/local/bin/node /Users/Apple/.npm-packages/bin/firebase deploy --only functions
+[debug] [2017-07-27T04:26:54.539Z] CLI Version:  3.9.1
+[debug] [2017-07-27T04:26:54.539Z] Platform:     darwin
+[debug] [2017-07-27T04:26:54.539Z] Node Version: v6.11.0
+[debug] [2017-07-27T04:26:54.540Z] Time:         Thu Jul 27 2017 11:26:54 GMT+0700 (ICT)
+[debug] [2017-07-27T04:26:54.540Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-07-27T04:26:54.559Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-07-27T04:26:54.559Z] > authorizing via signed-in user
+[debug] [2017-07-27T04:26:54.562Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/chatbot-319ee  
+ Thu Jul 27 2017 11:26:54 GMT+0700 (ICT)
+[debug] [2017-07-27T04:26:55.856Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-27T04:26:55.857Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/chatbot-319ee/tokens  
+ Thu Jul 27 2017 11:26:55 GMT+0700 (ICT)
+[debug] [2017-07-27T04:26:57.678Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'chatbot-319ee'...
+[info] 
+[info] i  deploying functions
+[debug] [2017-07-27T04:27:00.281Z] > [functions] package.json contents: {
+  "name": "chatbot-workplace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "crypto": "0.0.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "fb": "^2.0.0",
+    "firebase-admin": "^5.1.0",
+    "firebase-functions": "^0.6.1",
+    "request": "^2.81.0"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] [2017-07-27T04:27:00.283Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/chatbot-319ee?view=CONSUMER_VIEW  
+ Thu Jul 27 2017 11:27:00 GMT+0700 (ICT)
+[debug] [2017-07-27T04:27:00.283Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/chatbot-319ee?view=CONSUMER_VIEW  
+ Thu Jul 27 2017 11:27:00 GMT+0700 (ICT)
+[debug] [2017-07-27T04:27:02.152Z] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] [2017-07-27T04:27:02.327Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2017-07-27T04:27:02.328Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/chatbot-319ee  
+ Thu Jul 27 2017 11:27:02 GMT+0700 (ICT)
+[debug] [2017-07-27T04:27:02.329Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/chatbot-319ee/apiKeys  
+ Thu Jul 27 2017 11:27:02 GMT+0700 (ICT)
+[debug] [2017-07-27T04:27:03.889Z] <<< HTTP RESPONSE 200
+[debug] [2017-07-27T04:27:04.036Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2017-07-27T04:27:06.196Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/chatbot-319ee/configs  
+ Thu Jul 27 2017 11:27:06 GMT+0700 (ICT)
+[debug] [2017-07-27T04:27:07.547Z] <<< HTTP RESPONSE 200
+[error] 
+[error] Error: There was an unknown problem while trying to parse function triggers. Please ensure you are using Node.js v6 or greater.
