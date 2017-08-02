@@ -4,11 +4,16 @@ const
   express = require('express'),
   request = require('request');
   FB = require('fb')
+  MongoClient = require('mongodb').MongoClient;
+  assert = require('assert');
+  cors = require('cors')
 
   require('dotenv').load();
 
 
 var app = express();
+var communityId = ''
+app.use(cors())
 app.set('port', process.env.PORT || 5000);
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 
@@ -47,6 +52,18 @@ app.get('/', function(req, res) {
   }
 });
 
+app.post('/web', function(req, res) {
+  var message = req.body.message
+  res.header("Access-Control-Allow-Origin", "*")
+  res.setHeader('Content-Type', 'application/json');
+  var resp = {
+    "message": "sayhitou"
+  }
+  res.status(200)
+  console.log('post web')
+  console.log(resp)
+  res.json(resp)
+})
 
 /*
  * All callbacks for webhooks are POST-ed. They will be sent to the same
@@ -117,10 +134,100 @@ function processPageEvents(data) {
         console.log('Page Change',page_id,change);
       });
     }
+    else {
+      sendTextMessage(100008689093061, 'hi')
+    }
   });
 }
 
+function getCommunityId() {
+  request({
 
+    uri: 'https://graph.facebook.com/community/',
+    qs: { access_token: "DQVJ0Q0I0TDV4VTRQU3A4alhEOTVaUVFOTHJ2VzVQQXBOODJWYkdtUXdiWGU4YVlRTi1SelFhS3NfQjJuTXZAmaVN2alBpRk41TjkxaF9LQV9mRnBRc184dTJxN0dJaHNTR1FCSHFQUFBNQmNmTms0SnJZAZAXJzcVRFRlZAfTW53c0xhUVVISm5HdUtlaFpMalVGS1NocllRMHBHUU15Nm1ZAbnFNZAXRNYkptbW9Qbms3NVgxY0NBdjN5Q2I3eDZAESTJjdUxPeHl3" },
+    method: 'GET',
+  }, function (error, response, body) {
+
+    if (!error && response.statusCode == 200) {
+      console.log('Successfully get all member')
+      var id = JSON.parse(body);
+      console.log("community ID", id.id );
+      communityId = id.id
+      console.log('dddd', communityId);
+
+      return  id.id
+
+    } else {
+      console.error("Unable to get community id");
+      console.error(response);
+      console.error(error);
+    }
+  });
+}
+// community id = 587195098138468
+
+
+function sendTextMessageToMember(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: messageText
+      }
+    };
+    callSendToMemberAPI(messageData);
+
+}
+
+function getMember() {
+  request({
+
+    uri: 'https://graph.facebook.com/587195098138468/members/',
+    qs: { access_token: "DQVJ0Q0I0TDV4VTRQU3A4alhEOTVaUVFOTHJ2VzVQQXBOODJWYkdtUXdiWGU4YVlRTi1SelFhS3NfQjJuTXZAmaVN2alBpRk41TjkxaF9LQV9mRnBRc184dTJxN0dJaHNTR1FCSHFQUFBNQmNmTms0SnJZAZAXJzcVRFRlZAfTW53c0xhUVVISm5HdUtlaFpMalVGS1NocllRMHBHUU15Nm1ZAbnFNZAXRNYkptbW9Qbms3NVgxY0NBdjN5Q2I3eDZAESTJjdUxPeHl3" },
+    method: 'GET',
+  }, function (error, response, body) {
+
+    if (!error && response.statusCode == 200) {
+      console.log('Successfully get all member')
+      var json = JSON.parse(body);
+      console.log(json)
+
+
+
+    } else {
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
+    }
+  });
+
+}
+getMember()
+
+function getGroups () {
+  request({
+
+    uri: 'https://graph.facebook.com/587195098138468/groups/',
+    qs: { access_token: "DQVJ0Q0I0TDV4VTRQU3A4alhEOTVaUVFOTHJ2VzVQQXBOODJWYkdtUXdiWGU4YVlRTi1SelFhS3NfQjJuTXZAmaVN2alBpRk41TjkxaF9LQV9mRnBRc184dTJxN0dJaHNTR1FCSHFQUFBNQmNmTms0SnJZAZAXJzcVRFRlZAfTW53c0xhUVVISm5HdUtlaFpMalVGS1NocllRMHBHUU15Nm1ZAbnFNZAXRNYkptbW9Qbms3NVgxY0NBdjN5Q2I3eDZAESTJjdUxPeHl3" },
+    method: 'GET',
+  }, function (error, response, body) {
+
+    if (!error && response.statusCode == 200) {
+      console.log('Successfully get all groups')
+      var json = JSON.parse(body);
+      console.log(json)
+
+
+
+    } else {
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
+    }
+  });
+
+}
 function sendTextMessage(recipientId, messageText) {
   var messageData = {
     recipient: {
@@ -135,20 +242,6 @@ function sendTextMessage(recipientId, messageText) {
   }
 
   function callSendAPI(messageData) {
-    console.log('------messageData--------');
-    console.log(messageData);
-    console.log('receive from', messageData.recipient.id);
-    console.log('receive msg' , messageData.message.text);
-    console.log('reply back to', messageData.recipient.id);
-    console.log('with text', messageData.message.text);
-
-
-    // GET graph.facebook.com
-    //   /me/conversations?fields=messages{message,attachments}
-    //
-    console.log('-----------ACCESS_TOKEN-----------------');
-
-
 
 
   request({
@@ -203,7 +296,13 @@ function verifyRequestSignature(req, res, buf) {
   }
 }
 
-
+/// mongodb
+// var url = 'mongodb://localhost:27017/test';
+// MongoClient.connect(url, function(err, db) {
+//   assert.equal(null, err);
+//   console.log("Connected correctly to server.");
+//   db.close();
+// });
 
 // Start server
 // Webhooks must be available via SSL with a certificate signed by a valid

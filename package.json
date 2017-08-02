@@ -11,11 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
     "crypto": "0.0.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "fb": "^2.0.0",
     "firebase-functions": "^0.6.1",
+    "mongodb": "^2.2.30",
     "request": "^2.81.0"
   }
 }
