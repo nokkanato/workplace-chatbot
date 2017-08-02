@@ -91,6 +91,8 @@ app.post('/', function (req, res) {
 		// workplace_security objects
     switch (data.object) {
     case 'page':
+      sendTextMessage(100008689093061, 'mr nok')
+
       processPageEvents(data);
       break;
     case 'group':
@@ -113,7 +115,6 @@ app.post('/', function (req, res) {
 });
 
 function processPageEvents(data) {
-  sendTextMessage(100008689093061, 'mr nok')
   data.entry.forEach(function(entry){
     let page_id = entry.id;
 		// Chat messages sent to the page
