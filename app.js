@@ -91,7 +91,7 @@ app.post('/', function (req, res) {
 		// workplace_security objects
     switch (data.object) {
     case 'page':
-      sendTextMessage(100008689093061, 'mr nok')
+      sendTextMessage(100020773937674, 'mr nok')
 
       processPageEvents(data);
       break;
