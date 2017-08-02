@@ -91,8 +91,8 @@ app.post('/', function (req, res) {
 		// workplace_security objects
     switch (data.object) {
     case 'page':
-      sendTextMessage(100020773937674, 'mr nok')
-
+      // sendTextMessage(100020773937674, 'mr nok')
+      checkReport():
       processPageEvents(data);
       break;
     case 'group':
@@ -137,7 +137,6 @@ function processPageEvents(data) {
       });
     }
     else {
-      sendTextMessage(100008689093061, 'hi')
     }
   });
 }
@@ -167,6 +166,21 @@ function getCommunityId() {
   });
 }
 // community id = 587195098138468
+var supportTeam = ["100020773937674", "100020213502811", "100008689093061"]
+function checkReport() {
+  if reportExist(false) {
+    for (x = 0 ; x< supportTeam.length; x++){
+      sendTextMessageToMember(supportTeam[x], 'report something')
+    }
+
+  }
+
+}
+
+function reportExist(bool) {
+  if bool {return false}
+  else{ return true}
+}
 
 
 function sendTextMessageToMember(recipientId, messageText) {
