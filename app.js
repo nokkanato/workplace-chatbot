@@ -172,8 +172,9 @@ function checkReport() {
   console.log(triggerBoolean);
   if (reportExist(triggerBoolean)) {
     for (x = 0 ; x< supportTeam.length; x++){
+      triggerBoolean = false
       console.log(supportTeam[x]);
-      // sendTextMessage(supportTeam[x], 'report something')
+      sendTextMessage(supportTeam[x], 'report something')
     }
 
   }
@@ -182,7 +183,7 @@ function checkReport() {
 checkReport()
 
 function reportExist(bool) {
-  if (bool) {return true}
+  if (bool) { return true}
   else{ return false}
 }
 
