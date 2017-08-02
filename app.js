@@ -173,7 +173,7 @@ function checkReport() {
   if (reportExist(triggerBoolean)) {
     for (x = 0 ; x< supportTeam.length; x++){
       console.log(supportTeam[x]);
-      sendTextMessage(supportTeam[x], 'report something')
+      // sendTextMessage(supportTeam[x], 'report something')
     }
 
   }
