@@ -166,20 +166,24 @@ function getCommunityId() {
   });
 }
 // community id = 587195098138468
+var triggerBoolean = true
 var supportTeam = ["100020773937674", "100020213502811", "100008689093061"]
 function checkReport() {
-  if (reportExist(false)) {
+  console.log(triggerBoolean);
+  if (reportExist(triggerBoolean)) {
     for (x = 0 ; x< supportTeam.length; x++){
-      sendTextMessageToMember(supportTeam[x], 'report something')
+      console.log(supportTeam[x]);
+      sendTextMessage(supportTeam[x], 'report something')
     }
 
   }
 
 }
+checkReport()
 
 function reportExist(bool) {
-  if (bool) {return false}
-  else{ return true}
+  if (bool) {return true}
+  else{ return false}
 }
 
 
