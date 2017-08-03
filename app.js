@@ -7,8 +7,11 @@ const
   MongoClient = require('mongodb').MongoClient;
   assert = require('assert');
   cors = require('cors')
+  schedule = require('node-schedule');
+
 
   require('dotenv').load();
+
 
 
 var app = express();
@@ -16,6 +19,29 @@ var communityId = ''
 app.use(cors())
 app.set('port', process.env.PORT || 5000);
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
+
+
+
+///time alert///
+
+var rule = new schedule.RecurrenceRule();
+rule.dayOfWeek = [0, new schedule.Range(0, 5)];
+rule.hour = 9;
+rule.minute = 14;
+
+var j = schedule.scheduleJob(rule, function(){
+  sendTextMessage('100020773937674' , 'close aircondition')
+  console.log('Today is recognized by Rebecca Black!');
+});
+
+///////////
+
+
+
+
+
+
+
 
 /*
  * Be sure to setup your config values before running this code. You can
@@ -249,6 +275,37 @@ function getGroups () {
   });
 
 }
+function getName(id, callback) {
+  request({
+
+    uri: 'https://graph.facebook.com/'+id+'?fields=name',
+    qs: { access_token: "DQVJ0Q0I0TDV4VTRQU3A4alhEOTVaUVFOTHJ2VzVQQXBOODJWYkdtUXdiWGU4YVlRTi1SelFhS3NfQjJuTXZAmaVN2alBpRk41TjkxaF9LQV9mRnBRc184dTJxN0dJaHNTR1FCSHFQUFBNQmNmTms0SnJZAZAXJzcVRFRlZAfTW53c0xhUVVISm5HdUtlaFpMalVGS1NocllRMHBHUU15Nm1ZAbnFNZAXRNYkptbW9Qbms3NVgxY0NBdjN5Q2I3eDZAESTJjdUxPeHl3" },
+    method: 'GET',
+  }, function (error, response, body) {
+
+    if (!error && response.statusCode == 200) {
+      console.log('Successfully get all groups')
+      var json = JSON.parse(body);
+      var name = json.name
+      console.log(name);
+      callback(name);
+
+
+
+    } else {
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
+    }
+  });
+
+
+}
+
+getName("100020773937674", result => {
+  console.log('this is result ',result);
+})
+
 function sendTextMessage(recipientId, messageText) {
   var messageData = {
     recipient: {

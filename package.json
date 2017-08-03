@@ -18,6 +18,7 @@
     "fb": "^2.0.0",
     "firebase-functions": "^0.6.1",
     "mongodb": "^2.2.30",
+    "node-schedule": "^1.2.3",
     "request": "^2.81.0"
   }
 }
