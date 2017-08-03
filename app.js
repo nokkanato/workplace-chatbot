@@ -24,15 +24,21 @@ app.use(bodyParser.json({ verify: verifyRequestSignature }));
 
 ///time alert///
 
-var rule = new schedule.RecurrenceRule();
-rule.dayOfWeek = [0, new schedule.Range(0, 5)];
-rule.hour = 9;
-rule.minute = 14;
+// *    *    *    *    *    *
+// ┬    ┬    ┬    ┬    ┬    ┬
+// │    │    │    │    │    |
+// │    │    │    │    │    └ day of week (0 - 7) (0 or 7 is Sun)
+// │    │    │    │    └───── month (1 - 12)
+// │    │    │    └────────── day of month (1 - 31)
+// │    │    └─────────────── hour (0 - 23)
+// │    └──────────────────── minute (0 - 59)
+// └───────────────────────── second (0 - 59, OPTIONAL)
 
-var j = schedule.scheduleJob(rule, function(){
-  sendTextMessage('100020773937674' , 'close aircondition')
-  console.log('Today is recognized by Rebecca Black!');
-});
+// this is every 10 second of a minute
+// var j = schedule.scheduleJob('10 * * * * *', function(){
+//   sendTextMessage('100020773937674' , 'close aircondition')
+//   console.log('The answer to life, the universe, and everything!');
+// });
 
 ///////////
 
@@ -118,7 +124,7 @@ app.post('/', function (req, res) {
     switch (data.object) {
     case 'page':
       // sendTextMessage(100020773937674, 'mr nok')
-      checkReport();
+      // checkReport();
       processPageEvents(data);
       break;
     case 'group':
@@ -167,7 +173,7 @@ function processPageEvents(data) {
   });
 }
 
-function getCommunityId() {
+function getCommunityId(callback) {
   request({
 
     uri: 'https://graph.facebook.com/community/',
@@ -180,10 +186,8 @@ function getCommunityId() {
       var id = JSON.parse(body);
       console.log("community ID", id.id );
       communityId = id.id
-      console.log('dddd', communityId);
 
-      return  id.id
-
+      callback(communityId)
     } else {
       console.error("Unable to get community id");
       console.error(response);
@@ -191,6 +195,60 @@ function getCommunityId() {
     }
   });
 }
+
+function getMember(communityid, callback) {
+  console.log('getMember- communityid', communityid);
+  request({
+
+    uri: 'https://graph.facebook.com/'+communityid+'/members?limit=1000',
+    qs: { access_token: "DQVJ0Q0I0TDV4VTRQU3A4alhEOTVaUVFOTHJ2VzVQQXBOODJWYkdtUXdiWGU4YVlRTi1SelFhS3NfQjJuTXZAmaVN2alBpRk41TjkxaF9LQV9mRnBRc184dTJxN0dJaHNTR1FCSHFQUFBNQmNmTms0SnJZAZAXJzcVRFRlZAfTW53c0xhUVVISm5HdUtlaFpMalVGS1NocllRMHBHUU15Nm1ZAbnFNZAXRNYkptbW9Qbms3NVgxY0NBdjN5Q2I3eDZAESTJjdUxPeHl3" },
+    method: 'GET',
+  }, function (error, response, body) {
+
+    if (!error && response.statusCode == 200) {
+      console.log('Successfully get all member')
+      var json = JSON.parse(body);
+      console.log(json)
+      callback(json.data)
+    } else {
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
+    }
+  });
+
+}
+
+
+getCommunityId(comunityid =>{
+  console.log("this is communityid", comunityid);
+  getMember(comunityid, members => {
+    console.log('communityiddddddddd', comunityid);
+    // console.log("all member", members);
+    console.log("# of members", members.length);
+    filterUser(members)
+  })
+})
+
+
+function filterUser(members) {
+  for (x=0; x< members.length ; x++){
+    console.log(members[x].id, members[x].name);
+
+    sendTextMessage(members[x].id , "hello " +members[x].name + "  this is testing sorry for inconvenience")
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
 // community id = 587195098138468
 var triggerBoolean = true
 var supportTeam = ["100020773937674", "100020213502811", "100008689093061"]
@@ -206,7 +264,7 @@ function checkReport() {
   }
 
 }
-checkReport()
+// checkReport()
 
 function reportExist(bool) {
   if (bool) { return true}
@@ -227,29 +285,15 @@ function sendTextMessageToMember(recipientId, messageText) {
 
 }
 
-function getMember() {
-  request({
 
-    uri: 'https://graph.facebook.com/587195098138468/members/',
-    qs: { access_token: "DQVJ0Q0I0TDV4VTRQU3A4alhEOTVaUVFOTHJ2VzVQQXBOODJWYkdtUXdiWGU4YVlRTi1SelFhS3NfQjJuTXZAmaVN2alBpRk41TjkxaF9LQV9mRnBRc184dTJxN0dJaHNTR1FCSHFQUFBNQmNmTms0SnJZAZAXJzcVRFRlZAfTW53c0xhUVVISm5HdUtlaFpMalVGS1NocllRMHBHUU15Nm1ZAbnFNZAXRNYkptbW9Qbms3NVgxY0NBdjN5Q2I3eDZAESTJjdUxPeHl3" },
-    method: 'GET',
-  }, function (error, response, body) {
+// community id = 587195098138468
 
-    if (!error && response.statusCode == 200) {
-      console.log('Successfully get all member')
-      var json = JSON.parse(body);
-      console.log(json)
+// getMember("587195098138468", member => {
+//   console.log(member);
+// })
 
 
 
-    } else {
-      console.error("Unable to send message.");
-      console.error(response);
-      console.error(error);
-    }
-  });
-
-}
 // getMember()
 
 function getGroups () {
@@ -302,9 +346,7 @@ function getName(id, callback) {
 
 }
 
-getName("100020773937674", result => {
-  console.log('this is result ',result);
-})
+
 
 function sendTextMessage(recipientId, messageText) {
   var messageData = {
@@ -347,6 +389,17 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 /*
  * Verify that the callback came from Facebook. Using the App Secret we
  * can verify the signature that is sent with each callback in the
@@ -373,6 +426,38 @@ function verifyRequestSignature(req, res, buf) {
     }
   }
 }
+
+
+//
+
+// sendTextMessage(memberID)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /// mongodb
 // var url = 'mongodb://localhost:27017/test';
