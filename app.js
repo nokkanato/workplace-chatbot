@@ -12,35 +12,39 @@ const
 
   require('dotenv').load();
 
-
+var apiai = require('apiai');
 
 var app = express();
-var communityId = ''
 app.use(cors())
 app.set('port', process.env.PORT || 5000);
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 
 
 
-///time alert///
+var app = apiai("b981b06cbf654b1cbac532445ee31203");
 
-// *    *    *    *    *    *
-// ┬    ┬    ┬    ┬    ┬    ┬
-// │    │    │    │    │    |
-// │    │    │    │    │    └ day of week (0 - 7) (0 or 7 is Sun)
-// │    │    │    │    └───── month (1 - 12)
-// │    │    │    └────────── day of month (1 - 31)
-// │    │    └─────────────── hour (0 - 23)
-// │    └──────────────────── minute (0 - 59)
-// └───────────────────────── second (0 - 59, OPTIONAL)
+var request = app.textRequest('Calendar', {
+    sessionId: '<unique session id>'
+});
 
-// this is every 10 second of a minute
-// var j = schedule.scheduleJob('10 * * * * *', function(){
-//   sendTextMessage('100020773937674' , 'close aircondition')
-//   console.log('The answer to life, the universe, and everything!');
-// });
+request.on('response', function(response) {
+  response = [
+    {text: : "hi"}
+  ]
+    console.log(response);
+});
 
-///////////
+request.on('error', function(error) {
+    console.log(error);
+});
+
+request.end();
+
+
+
+
+
+
 
 
 
@@ -89,7 +93,7 @@ app.post('/web', function(req, res) {
   res.header("Access-Control-Allow-Origin", "*")
   res.setHeader('Content-Type', 'application/json');
   var resp = {
-    "message": "sayhitou"
+    "message": message+'reply'
   }
   res.status(200)
   console.log('post web')
@@ -185,7 +189,7 @@ function getCommunityId(callback) {
       console.log('Successfully get all member')
       var id = JSON.parse(body);
       console.log("community ID", id.id );
-      communityId = id.id
+      var communityId = id.id
 
       callback(communityId)
     } else {
@@ -220,15 +224,19 @@ function getMember(communityid, callback) {
 }
 
 
-getCommunityId(comunityid =>{
-  console.log("this is communityid", comunityid);
-  getMember(comunityid, members => {
-    console.log('communityiddddddddd', comunityid);
-    // console.log("all member", members);
-    console.log("# of members", members.length);
-    filterUser(members)
-  })
-})
+// getCommunityId(comunityid =>{
+//   console.log("this is communityid", comunityid);
+//   getMember(comunityid, members => {
+//     console.log('communityiddddddddd', comunityid);
+//     // console.log("all member", members);
+//     console.log("# of members", members.length);
+//     // send
+//     sendTextMessage(members[0].id , "hello " +members[0].name + "  this is testing sorry for inconvenience")
+//
+//
+//     // filterUser(members)
+//   })
+// })
 
 
 function filterUser(members) {
@@ -240,15 +248,7 @@ function filterUser(members) {
 
 }
 
-
-
-
-
-
-
-
-
-
+///////////////////test///////////////////////////////////////////////////////////////
 // community id = 587195098138468
 var triggerBoolean = true
 var supportTeam = ["100020773937674", "100020213502811", "100008689093061"]
@@ -271,31 +271,11 @@ function reportExist(bool) {
   else{ return false}
 }
 
-
-function sendTextMessageToMember(recipientId, messageText) {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      text: messageText
-      }
-    };
-    callSendToMemberAPI(messageData);
-
-}
-
-
-// community id = 587195098138468
-
-// getMember("587195098138468", member => {
-//   console.log(member);
-// })
+///////////////////////////////////////////////////////////////////////////////////////
 
 
 
-// getMember()
-
+///////////////////////////////////GET Group in workplace/////////////////////////////////
 function getGroups () {
   request({
 
@@ -319,6 +299,9 @@ function getGroups () {
   });
 
 }
+//////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////GET NAME BY ID WORKPLACE//////////////////////////////////////////
 function getName(id, callback) {
   request({
 
@@ -345,6 +328,8 @@ function getName(id, callback) {
 
 
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -431,23 +416,6 @@ function verifyRequestSignature(req, res, buf) {
 //
 
 // sendTextMessage(memberID)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
